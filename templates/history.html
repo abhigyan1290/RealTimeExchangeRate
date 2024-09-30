@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Historical Data Result</title>
+  <style>
+    /* Add your styles here */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Historical Data for {{ from_currency }} to {{ to_currency }}</h1>
+    <img src="{{ url_for('static', filename=image_filename) }}" alt="Historical Data Chart">
+    <p>The chart displays the exchange rate and momentum-based buy/sell signals over the selected period.</p>
+    <a href="/history">View Another</a>
+  </div>
+</body>
+</html>

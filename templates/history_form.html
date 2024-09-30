@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Historical Data</title>
+  <style>
+    /* Add your styles here */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Historical Currency Trend Analysis</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+    <form action="/history" method="post">
+      <!-- Replace individual currency selectors with a pair selector -->
+        <div>
+            <label for="currency_pair">Currency Pair:</label>
+            <select name="currency_pair" id="currency_pair">
+            {% for from_currency, to_currency in currency_pairs %}
+                <option value="{{ from_currency }}-{{ to_currency }}">{{ from_currency }}/{{ to_currency }}</option>
+            {% endfor %}
+            </select>
+        </div>
+  
+
+      <div>
+        <label for="to_currency">To:</label>
+        <select name="to_currency" id="to_currency">
+          {% for currency in currencies %}
+            <option value="{{ currency }}">{{ currency }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div>
+        <label for="period">Period:</label>
+        <select name="period" id="period">
+          {% for label, value in periods.items() %}
+            <option value="{{ value }}">{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <button type="submit">View Trend</button>
+    </form>
+  </div>
+</body>
+</html>
